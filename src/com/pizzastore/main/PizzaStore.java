@@ -20,13 +20,15 @@ public class PizzaStore {
 		orders = new LinkedList<>();
 	}
 
-	public void placeOrder(Order order) {
+	public double placeOrder(Order order) {
 
 		List<FoodItem> foodItems = order.getFoodItem();
 		for (FoodItem foodItem : foodItems) {
 			foodItem.bake();
 		}
 		orders.add(order);
+		order.displayOrder();
+		return order.getFinalPrice();
 	}
 
 	public static void main(String[] args) {
@@ -39,13 +41,12 @@ public class PizzaStore {
 		cheeseBurstPizza.addExtra(new Mushrooms());
 
 		Pizza margheritaPizza = new MargheritaPizza();
-
 		order.addFoodItem(cheeseBurstPizza);
 		order.addFoodItem(margheritaPizza);
 		order.addFoodItem(new Coffee());
+		order.addFoodItem(new Coffee());
+		order.addFoodItem(new Coffee());
 
-		System.out.println(order.getFinalPrice());
-		
 		pizzaStore.placeOrder(order);
 
 	}

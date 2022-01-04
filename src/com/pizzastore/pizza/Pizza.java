@@ -68,6 +68,7 @@ public abstract class Pizza implements FoodItem {
 
 	@Override
 	public String toString() {
+		
 		String allToppings = "";
 		
 		for (Toppings topping : toppings) {
