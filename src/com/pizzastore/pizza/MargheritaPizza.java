@@ -1,6 +1,9 @@
 package com.pizzastore.pizza;
 
+import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.orders.FoodItemName;
 import com.pizzastore.pizza.toppings.Mushrooms;
+import com.pizzastore.store.Storage;
 
 public class MargheritaPizza extends Pizza {
 
@@ -14,7 +17,8 @@ public class MargheritaPizza extends Pizza {
 	}
 
 	@Override
-	public void bake() {
+	public void bake() throws OutOfStockException {
+		Storage.get(FoodItemName.PIZZA);
 		this.addToppings(new Mushrooms());
 	}
 	

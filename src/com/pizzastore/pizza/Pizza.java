@@ -11,11 +11,13 @@ import com.pizzastore.pizza.toppings.Toppings;
 public abstract class Pizza implements FoodItem {
 
 	private String name;
+	private boolean isAvailable;
 	private List<Toppings> toppings;
 	private List<Toppings> extra;
 	protected PizzaCrusts pizzaCrusts;
 
 	public Pizza(String name) {
+		this();
 		this.name = name;
 		this.toppings = new ArrayList<>();
 		this.extra = new ArrayList<>();
@@ -23,13 +25,7 @@ public abstract class Pizza implements FoodItem {
 	}
 
 	public Pizza() {
-
-	}
-
-	public void bake() {
-		
-		// default toppings 
-
+		isAvailable = true;
 	}
 
 	public void setPizzaCrusts(PizzaCrusts pizzaCrusts) {
@@ -39,11 +35,11 @@ public abstract class Pizza implements FoodItem {
 	public void addToppings(Toppings toppings) {
 		this.toppings.add(toppings);
 	}
-	
+
 	public void addExtra(Toppings toppings) {
 		this.extra.add(toppings);
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -52,7 +48,7 @@ public abstract class Pizza implements FoodItem {
 
 		double price = getBasePrice();
 		price += pizzaCrusts.getPrice();
-		
+
 		for (Toppings toppings2 : toppings) {
 			price += toppings2.getPrice();
 		}
@@ -60,7 +56,7 @@ public abstract class Pizza implements FoodItem {
 		for (Toppings extraToppings : extra) {
 			price += extraToppings.getPrice();
 		}
-		
+
 		return price;
 	}
 
@@ -68,18 +64,28 @@ public abstract class Pizza implements FoodItem {
 
 	@Override
 	public String toString() {
-		
+
 		String allToppings = "";
-		
+
 		for (Toppings topping : toppings) {
 			allToppings += topping.getName() + ", ";
 		}
-		
+
 		for (Toppings topping : extra) {
 			allToppings += topping.getName() + ", ";
 		}
-		
+
 		return this.name + " with [" + allToppings + "] is ready.";
+	}
+
+	@Override
+	public boolean getIsAvailable() {
+		return isAvailable;
+	}
+
+	@Override
+	public void setAvailable(boolean avaibility) {
+		this.isAvailable = avaibility;
 	}
 
 }

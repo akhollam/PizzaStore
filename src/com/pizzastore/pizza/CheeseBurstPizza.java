@@ -1,11 +1,14 @@
 package com.pizzastore.pizza;
 
+import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.orders.FoodItemName;
 import com.pizzastore.pizza.crust.ThickCrustPizza;
 import com.pizzastore.pizza.toppings.BlackOlives;
 import com.pizzastore.pizza.toppings.GreenPeppers;
 import com.pizzastore.pizza.toppings.Mushrooms;
 import com.pizzastore.pizza.toppings.Onions;
 import com.pizzastore.pizza.toppings.Pepperoni;
+import com.pizzastore.store.Storage;
 
 public class CheeseBurstPizza extends Pizza {
 
@@ -23,7 +26,10 @@ public class CheeseBurstPizza extends Pizza {
 	}
 
 	@Override
-	public void bake() {
+	public void bake() throws OutOfStockException {
+		
+		Storage.get(FoodItemName.PIZZA);
+		
 		this.setPizzaCrusts(new ThickCrustPizza());
 		this.addToppings(new Pepperoni());
 		this.addToppings(new Mushrooms());
