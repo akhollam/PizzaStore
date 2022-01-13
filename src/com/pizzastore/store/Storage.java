@@ -42,7 +42,7 @@ public final class Storage {
 		STORE.put(itemName, ++availableCount);
 	}
 
-	private static void displayAvailability() {
+	public static void displayAvailability() {
 		System.out.println(STORE);
 	}
 
