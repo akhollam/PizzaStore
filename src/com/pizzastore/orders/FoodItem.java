@@ -1,6 +1,6 @@
 package com.pizzastore.orders;
 
-import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.exceptions.FoodItemOutOfStockException;
 
 public interface FoodItem {
 
@@ -12,6 +12,6 @@ public interface FoodItem {
 
 	void setAvailable(boolean avaibility);
 
-	void bake() throws OutOfStockException;
+	void bake() throws FoodItemOutOfStockException;
 
 }

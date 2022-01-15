@@ -1,9 +1,10 @@
 package com.pizzastore.store;
 
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
-import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.exceptions.FoodItemOutOfStockException;
 import com.pizzastore.orders.FoodItem;
 import com.pizzastore.orders.FoodItemName;
 
@@ -24,16 +25,20 @@ public final class Storage {
 
 	}
 
-	public static FoodItem get(FoodItemName itemName) throws OutOfStockException {
+	public static FoodItem get(FoodItemName itemName) throws FoodItemOutOfStockException {
 
 		Integer availableCount = STORE.get(itemName);
 		if (availableCount == null || availableCount <= 0) {
-			throw new OutOfStockException("Not in stock.");
+			throw new FoodItemOutOfStockException("Not in stock.");
 		}
 
 		STORE.put(itemName, --availableCount);
 		displayAvailability();
 		return null;
+	}
+	
+	public static void returnItems(List<FoodItem> foodItems) {
+		
 	}
 	
 	public static void returnItem(FoodItemName itemName) {

@@ -3,7 +3,7 @@ package com.pizzastore.frenchfries;
 import java.util.EnumMap;
 import java.util.Map;
 
-import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.exceptions.FoodItemOutOfStockException;
 import com.pizzastore.orders.FoodItem;
 import com.pizzastore.orders.FoodItemName;
 import com.pizzastore.store.Storage;
@@ -45,7 +45,7 @@ public class FrenchFries implements FoodItem {
 	}
 
 	@Override
-	public void bake() throws OutOfStockException {
+	public void bake() throws FoodItemOutOfStockException {
 		
 		Storage.get(FoodItemName.FRENCH_FRIES);
 		

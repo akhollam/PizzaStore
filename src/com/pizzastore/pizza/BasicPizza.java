@@ -1,6 +1,6 @@
 package com.pizzastore.pizza;
 
-import com.pizzastore.exceptions.OutOfStockException;
+import com.pizzastore.exceptions.FoodItemOutOfStockException;
 import com.pizzastore.orders.FoodItemName;
 import com.pizzastore.store.Storage;
 
@@ -12,7 +12,7 @@ public class BasicPizza extends Pizza {
 	}
 
 	@Override
-	public void bake() throws OutOfStockException {
+	public void bake() throws FoodItemOutOfStockException {
 		Storage.get(FoodItemName.PIZZA);
 	}
 
